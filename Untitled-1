@@ -1,0 +1,5 @@
+wscat -c wss://stream.data.sandbox.alpaca.markets/v2/iex
+
+{"action": "auth", "key": "CKR6TCVV6Y7D4UDDR8OV", "secret": "ogaHIjsvVJh89gyVBFAf8bAYXY8YeEKI78OpNVOe"}
+
+{"action":"subscribe","trades":["AAPL"],"quotes":["AMD","CLDR"],"bars":["AAPL","VOO"]}
