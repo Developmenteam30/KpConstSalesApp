@@ -265,7 +265,6 @@ const HomeScreen = ({navigation}) => {
             <Text style={styles.listHeadingText}>Material </Text>
             <Text style={styles.listNumber}>{item.ProductName}</Text>
           </View>
-
           <View style={styles.listTxtNoView}>
             <Text style={styles.listHeadingText}>Vehicle# </Text>
             <Text style={styles.listNumber}>{item.VehicleNo}</Text>

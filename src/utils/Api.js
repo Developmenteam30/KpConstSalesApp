@@ -16,7 +16,7 @@ class Api {
       });
     }
     await api.storeData(global.userId, o);
-    // var l = await this.removeValue('userId');
+    var l = await this.removeValue('userId');
     return l ? true : false;
   }
   getcurrentdate = () => {
