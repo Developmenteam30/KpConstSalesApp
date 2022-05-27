@@ -18,13 +18,13 @@ import {colors} from '../utils/Variables';
 import CustomTextInput from '../component/CustomTextInput';
 import CustomButton from '../component/CustomButton';
 
-const ProfileScreen = ({navigation}) => {
+const ProfileScreen = props => {
   const [firstName, setFirstName] = useState(global.userId);
   const [lastName, setLastName] = useState('Infotech');
   const [email, setEmail] = useState('curveinfotech@gmail.com');
   const [password, setPassword] = useState('curve@123');
 
-  const handlePressLogout = () => {
+  /*const handlePressLogout = () => {
     Alert.alert('Logout', 'Are you sure to logout', [
       {
         text: 'Cancel',
@@ -37,19 +37,21 @@ const ProfileScreen = ({navigation}) => {
       }},
     ]);
   };
-
+*/
   return (
     <KeyboardAwareScrollView>
       <SafeAreaView style={styles.mainContainer}>
         <LinearGradient
           colors={[colors.gradientMilkyBlue, colors.gradientBlue]}
+          start={{x: 0, y: 0}}
+          end={{x: 2, y: 1}}
           style={styles.backgroundStyle}>
           <View style={styles.header}>
             <Icon
               name="keyboard-backspace"
               color="white"
               size={25}
-              onPress={() => navigation.goBack()}
+              onPress={() => props.navigation.goBack()}
             />
             <Text style={styles.headerTitle}>Profile</Text>
           </View>
@@ -114,7 +116,7 @@ const ProfileScreen = ({navigation}) => {
             </View> */}
           </View>
           <View style={{marginBottom: '30%'}}>
-            <CustomButton onPress={() => handlePressLogout()} title="LOG OUT" />
+            <CustomButton title="LOG OUT" />
           </View>
         </LinearGradient>
       </SafeAreaView>

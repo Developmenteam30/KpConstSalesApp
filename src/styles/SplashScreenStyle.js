@@ -16,11 +16,20 @@ const styles = StyleSheet.create({
     color: colors.white,
     marginTop: '3%',
   },
+  mainText1: {
+    fontSize: fontSizes.large,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    color: colors.white,
+    marginTop: 10,
+  },
   logoStyle: {
-    height: 300,
-    width: '80%',
+    height: 200,
+    width: 200,
     marginTop: '45%',
     alignSelf: 'center',
+    resizeMode: 'contain',
+    borderRadius: 25,
   },
   textLogoBottm: {
     marginTop: -50,

@@ -1,15 +1,18 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {color} from 'react-native-reanimated';
 import {colors, fontSizes} from '../utils/Variables';
-
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: colors.white,
   },
   subContainer: {
     marginHorizontal: 5,
+  },
+  rowDirection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 10,
   },
   mainText: {
     fontSize: fontSizes.medium,
@@ -17,8 +20,58 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: colors.white,
   },
+  modalContainer: {
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    flex: 1,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    justifyContent: 'center',
+  },
+  modalContainer1: {
+    backgroundColor: colors.lightblue,
+    paddingVertical: '4%',
+    borderRadius: 10,
+    marginTop: 22,
+    marginHorizontal: 5,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+  formTxt: {
+    fontSize: fontSizes.smaller,
+    fontWeight: 'bold',
+    color: colors.black,
+  },
+  spaces: {
+    width: '2%',
+  },
+  spaces1: {
+    flex: 1,
+    marginTop: 25,
+  },
+  modalinput: {
+    width: '90%',
+    color: colors.black,
+  },
+  inputView: {
+    height: 40,
+    // flex: 1,
+    borderWidth: 0.5,
+    borderColor: colors.gray,
+    borderRadius: 10,
+    paddingHorizontal: 5,
+    marginTop: 5,
+  },
+  inputView1: {
+    flexDirection: 'row',
+    borderWidth: 0.7,
+    borderRadius: 10,
+    borderColor: colors.white,
+    marginTop: 20,
+    marginHorizontal: 20,
+    paddingHorizontal: '2%',
+  },
   cardHeader: {
-    backgroundColor: colors.blue,
+    backgroundColor: colors.white,
     padding: 0,
     marginHorizontal: -0.9,
     marginTop: -0.9,
@@ -32,9 +85,8 @@ const styles = StyleSheet.create({
   },
   headerView: {
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 15,
+    padding: 10,
     height: 60,
   },
   headerIconView: {
@@ -73,15 +125,73 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: colors.white,
   },
-  upTabMainView: {
-    marginTop: '2%',
+  backgroundStyle: {
+    flex: 1,
+    resizeMode: 'cover',
+    height: height,
+  },
+  whiteBanner: {
+    // flexDirection: 'row',
+
+    borderRadius: 10,
+    backgroundColor: colors.white,
+    marginTop: 10,
+    marginHorizontal: 15,
+    paddingHorizontal: '2%',
+    paddingVertical: 5,
+  },
+  whiteBanner1: {
+    paddingHorizontal: 10,
+  },
+  rowDirection1: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  orderTxt: {
+    fontSize: fontSizes.small,
+    color: colors.black,
+    fontWeight: 'bold',
+  },
+  orderTxt1: {
+    fontSize: fontSizes.small,
+    color: colors.black,
+    fontWeight: 'bold',
+    marginLeft: 5,
+  },
+  rowSpace1: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignSelf: 'center',
-    borderWidth: 0.5,
-    borderRadius: 5,
-    marginHorizontal: '3%',
+    marginTop: 5,
+    alignItems: 'center',
   },
+  rowDirection2: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  grayTxt: {
+    fontSize: fontSizes.smaller,
+    color: colors.gray,
+    fontWeight: '500',
+    lineHeight: 25,
+  },
+  date: {
+    fontSize: fontSizes.smaller,
+    color: colors.black,
+    fontWeight: '800',
+    lineHeight: 25,
+    marginLeft: 10,
+  },
+  track: {
+    fontSize: fontSizes.smaller,
+    color: colors.gray,
+    fontWeight: '500',
+    lineHeight: 25,
+  },
+  top: {
+    marginTop: 5,
+  },
+  ///=========
+
   pendingTabView: {
     width: '50%',
     borderTopLeftRadius: 5,
@@ -221,37 +331,6 @@ const styles = StyleSheet.create({
   pendingTxt: {
     color: colors.orange,
     alignSelf: 'center',
-  },
-  //===========
-  tabButton: {
-    paddingVertical: '6%',
-    marginTop: '3%',
-    margin: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 25,
-    // alignSelf: 'center',
-
-    borderRadius: 12,
-    marginHorizontal: '3%',
-  },
-  tabButtonTxt: {
-    fontSize: fontSizes.small,
-    fontWeight: '500',
-    color: colors.white,
-    marginLeft: 20,
-  },
-  tabContainer: {
-    marginTop: '15%',
-  },
-  whiteLine: {
-    resizeMode: 'contain',
-    marginLeft: 25,
-  },
-  whiteLine1: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });
 export default styles;

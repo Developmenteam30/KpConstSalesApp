@@ -4,8 +4,9 @@ import {colors, fontSizes} from '../utils/Variables';
 const styles = StyleSheet.create({
   inputContainer: {
     marginLeft: 5,
-    color: colors.white,
-    fontSize: fontSizes.small,
+    color: colors.blue,
+    fontSize: fontSizes.smaller,
+    fontWeight: '400',
     width: '77%',
   },
 });

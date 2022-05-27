@@ -15,8 +15,8 @@ const App = () => {
     <SafeAreaView style={{flex: 1}}>
       <Provider store={store}>
         <NavigationContainer>
-          <StatusBar barStyle="dark-content" backgroundColor={colors.gradientMilkyBlue} />
-          <MainStack/>
+          <StatusBar barStyle="dark-content" backgroundColor={colors.blue} />
+          <MainStack />
         </NavigationContainer>
       </Provider>
     </SafeAreaView>

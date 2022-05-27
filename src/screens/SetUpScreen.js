@@ -1,13 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Text,
-  View,
-  Image,
-  Alert,
-} from 'react-native';
+import {Text, View, Image, Alert} from 'react-native';
 import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import api from '../utils/Api';
 import {Images} from '../utils/Images';
@@ -16,14 +11,14 @@ import {colors} from '../utils/Variables';
 import CustomTextInput from '../component/CustomTextInput';
 import CustomButton from '../component/CustomButton';
 
-const SetUpScreen = ({navigation}) => {
+const SetUpScreen = props => {
   const [server, setServer] = useState('');
   const [client, setClient] = useState(null);
   const [organization, setOrganization] = useState(null);
   const [role, setRole] = useState(null);
   const [warehouse, setWarehouse] = useState(null);
 
-  const setUp = async () => {
+  /* const setUp = async () => {
     if (server != '' && client != null && organization != null && role != null && warehouse != null){
       var collectionStr = {'server': server, 'client': client, 'organization': organization, "role": role, 'warehouse': warehouse}
       await api.storeData('collectionStr', collectionStr);
@@ -54,12 +49,11 @@ const SetUpScreen = ({navigation}) => {
 
   useEffect(() => {
     checkServerDetails();
-  });
+  });*/
 
   return (
-    
-      <View style={styles.mainContainer}>
-        <KeyboardAwareScrollView>
+    <View style={styles.mainContainer}>
+      <KeyboardAwareScrollView>
         <LinearGradient
           colors={[colors.gradientMilkyBlue, colors.gradientBlue]}
           style={styles.backgroundStyle}>
@@ -150,15 +144,14 @@ const SetUpScreen = ({navigation}) => {
             </View>
           </View>
           <View style={{marginBottom: '25%'}}>
-          <CustomButton
-            onPress={() => setUp()}
-            title = "SET UP"
-          />
+            <CustomButton
+              onPress={() => props.navigation.navigate('Login')}
+              title="SET UP"
+            />
           </View>
         </LinearGradient>
-        </KeyboardAwareScrollView>
-      </View>
-    
+      </KeyboardAwareScrollView>
+    </View>
   );
 };
 export default SetUpScreen;

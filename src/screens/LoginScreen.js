@@ -7,6 +7,7 @@ import {
   Image,
   Alert,
 } from 'react-native';
+
 import {Icon} from 'react-native-elements';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -16,8 +17,9 @@ import styles from '../styles/LoginScreenStyle';
 import {colors} from '../utils/Variables';
 import CustomTextInput from '../component/CustomTextInput';
 import CustomButton from '../component/CustomButton';
+import {ScrollView} from 'react-native-gesture-handler';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visiblePassword, setVisiblePassword] = useState(true);
@@ -25,7 +27,6 @@ const LoginScreen = ({navigation}) => {
   const login = async () => {
     var l = await api.login(email, password);
     if (l) {
-      console.log(l);
       var s = await api.storeData('userId', l);
       await api.storeData('email', email);
       await api.storeData('password', password);
@@ -33,13 +34,13 @@ const LoginScreen = ({navigation}) => {
         global.userId = l;
         global.email = email;
         global.password = password;
-        navigation.replace('Home');
+        props.navigation.replace('HomeScreen');
       } else {
         alert('not saved');
       }
     }
   };
-  const checkServerDetails = async () => {
+  /* const checkServerDetails = async () => {
     var collectionStr = await api.getData('collectionStr');
     if (collectionStr && collectionStr != null) {
       global.collectionStr = collectionStr;
@@ -63,81 +64,104 @@ const LoginScreen = ({navigation}) => {
     } catch (e) {
       // remove error
     }
-  };
+  };*/
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <LinearGradient
-        colors={[colors.gradientMilkyBlue, colors.gradientBlue]}
-        style={styles.backgroundStyle}>
-        <Image source={Images.logo} style={styles.logoStyle} />
-        <Text style={styles.mainText}>SyvaSoft</Text>
-        <View style={styles.inputMainContainer}>
-          <View style={styles.inputView}>
-            {/* <Text>email</Text> */}
-            <Icon
-              name="email"
-              color={colors.lightGray}
-              size={30}
-              style={{top: 9}}
-            />
-            <CustomTextInput
-              placeholder="User ID"
-              placeholderTextColor={colors.white}
-              onChangeText={TextInputValue => setEmail(TextInputValue)}
-              value={email}
-            />
+      <ScrollView>
+        <LinearGradient
+          colors={[colors.gradientBlue, colors.gradientMilkyBlue]}
+          start={{x: 2, y: 0}}
+          end={{x: 1, y: 3}}
+          style={styles.backgroundStyle}>
+          <View>
+            <Image source={Images.logo2} style={styles.logoStyle} />
           </View>
-          <View style={styles.inputView}>
-            {/* <Text>email</Text> */}
-            <Icon
-              name="lock"
-              color={colors.lightGray}
-              size={30}
-              style={{top: 9}}
-            />
-            <CustomTextInput
-              placeholder="Password"
-              placeholderTextColor={colors.white}
-              secureTextEntry={visiblePassword}
-              onChangeText={TextInputValue => setPassword(TextInputValue)}
-              value={password}
-            />
-            <TouchableOpacity onPress={() => passwordVisibleHandlePress()}>
-              {!visiblePassword && (
+          <Text style={styles.mainText}>KPCons Sales App</Text>
+          <View style={styles.whiteBox}>
+            <View>
+              <Text style={styles.wellcomeText}>Welcome back</Text>
+              <Text style={styles.loginTxt}>Login to continue</Text>
+
+              <Image source={Images.blueLine} style={styles.line} />
+            </View>
+
+            <View style={styles.inputMainContainer}>
+              <Text style={styles.userTxt}>Username</Text>
+              <View style={styles.inputView}>
+                {/* <Text>email</Text> */}
                 <Icon
-                  name="eye"
-                  type={'ionicon'}
-                  color={colors.white}
+                  name="email"
+                  color={colors.blue}
                   size={30}
-                  style={
-                    Platform.OS == 'ios'
-                      ? styles.inputIconIos
-                      : styles.inputIconAndroid
-                  }
+                  style={{top: 9}}
                 />
-              )}
-              {visiblePassword && (
+                <CustomTextInput
+                  placeholder="Enter Username"
+                  placeholderTextColor={colors.gray}
+                  onChangeText={TextInputValue => setEmail(TextInputValue)}
+                  value={email}
+                />
+              </View>
+              <Text style={styles.userTxt}>Password</Text>
+              <View style={styles.inputView}>
+                {/* <Text>email</Text> */}
                 <Icon
-                  name="eye-off"
-                  type={'ionicon'}
-                  color={colors.white}
+                  name="lock"
+                  color={colors.blue}
                   size={30}
-                  style={
-                    Platform.OS == 'ios'
-                      ? styles.inputIconIos
-                      : styles.inputIconAndroid
-                  }
+                  style={{top: 9}}
                 />
-              )}
-            </TouchableOpacity>
+                <CustomTextInput
+                  placeholder="Enter Password"
+                  placeholderTextColor={colors.gray}
+                  secureTextEntry={visiblePassword}
+                  onChangeText={TextInputValue => setPassword(TextInputValue)}
+                  value={password}
+                />
+                <TouchableOpacity
+                  onPress={() => setVisiblePassword(!visiblePassword)}>
+                  {!visiblePassword && (
+                    <Icon
+                      name="eye"
+                      type={'ionicon'}
+                      color={colors.gray}
+                      size={30}
+                      style={
+                        Platform.OS == 'ios'
+                          ? styles.inputIconIos
+                          : styles.inputIconAndroid
+                      }
+                    />
+                  )}
+                  {visiblePassword && (
+                    <Icon
+                      name="eye-off"
+                      type={'ionicon'}
+                      color={colors.gray}
+                      size={30}
+                      style={
+                        Platform.OS == 'ios'
+                          ? styles.inputIconIos
+                          : styles.inputIconAndroid
+                      }
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>
+              <View style={{marginTop: 30}}>
+                <CustomButton
+                  onPress={() => props.navigation.navigate('HomeScreen')}
+                  title="LOGIN"
+                />
+              </View>
+            </View>
           </View>
-        </View>
-        <CustomButton onPress={() => login()} title="LOGIN" />
-        <TouchableOpacity
-          onPress={async () => await removeValue('collectionStr')}>
-          <Text style={styles.bottomText}>Change Server Details</Text>
-        </TouchableOpacity>
-      </LinearGradient>
+        </LinearGradient>
+        {/**    <CustomButton
+          onPress={() => props.navigation.navigate('HomeScreen')}
+          title="LOGIN"
+        />*/}
+      </ScrollView>
     </SafeAreaView>
   );
 };

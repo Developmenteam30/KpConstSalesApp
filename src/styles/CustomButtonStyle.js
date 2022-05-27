@@ -1,18 +1,22 @@
 import {StyleSheet} from 'react-native';
+import {color} from 'react-native-reanimated';
 import {colors, fontSizes} from '../utils/Variables';
 
 const styles = StyleSheet.create({
   button: {
-    marginHorizontal: 20,
-    padding: 15,
-    width: '90%',
-    borderRadius: 20,
+    alignSelf: 'center',
+    marginHorizontal: 0,
+    paddingVertical: 12,
+    width: '45%',
+    borderRadius: 6,
+    marginTop: 10,
+    // backgroundColor: colors.blue,
   },
   buttonText: {
-    alignSelf: 'center',
+    textAlign: 'center',
     fontSize: fontSizes.small,
-    color: colors.black,
-    fontWeight: 'bold',
+    color: colors.white,
+    fontWeight: '500',
   },
 });
 export default styles;
